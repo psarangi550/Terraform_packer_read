@@ -1,0 +1,19 @@
+source "amazon-ebs" "aws-example" {
+ami_name = "${var.ami_name}"
+instance_type = "t3.medium"
+region = "us-east-1"
+source_ami_filter {
+filters = {
+name = "${var.source_ami_name}"
+root-device-type = "ebs"
+virtualization-type = "hvm"
+}
+owners = ["amazon"]
+}
+ssh_username = "ec2-user"
+subnet_id = "${var.subnet_id}"
+tags = {
+Name = "${var.ami_name}"
+}
+vpc_id = "vpc-1234567890"
+}
